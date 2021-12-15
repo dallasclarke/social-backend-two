@@ -3,9 +3,10 @@ const router = express.Router();
 const { check } = require("express-validator");
 
 const auth = require("../middleware/auth");
-const { createPost, getAllPosts } = require("../controllers/postsController");
+const { createPost, getAllPosts, getPostById } = require("../controllers/postsController");
 
 router.get("/", auth, getAllPosts);
+router.get("/:id", auth, getPostById);
 
 router.post(
   "/",
