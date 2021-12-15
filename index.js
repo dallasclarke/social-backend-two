@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+const postsRouter = require("./routes/posts");
 
 connectDB();
 
@@ -14,6 +15,7 @@ app.use(express.json({ extended: false }));
 
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/posts", postsRouter);
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
