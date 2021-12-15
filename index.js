@@ -4,6 +4,7 @@ const connectDB = require("./config/db");
 require("dotenv").config();
 
 const usersRouter = require("./routes/users");
+const authRouter = require("./routes/auth");
 
 connectDB();
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.json({ extended: false }));
 
 app.use("/api/users", usersRouter);
+app.use("/api/auth", authRouter);
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
