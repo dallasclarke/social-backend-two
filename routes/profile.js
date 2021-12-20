@@ -3,7 +3,9 @@ const router = express.Router();
 const { check } = require("express-validator");
 
 const auth = require("../middleware/auth");
-const { createProfile } = require("../controllers/profileController");
+const { createProfile, userProfile } = require("../controllers/profileController");
+
+router.get("/me", auth, userProfile);
 
 router.post("/", auth, createProfile);
 
