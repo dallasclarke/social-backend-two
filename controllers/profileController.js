@@ -1,5 +1,5 @@
 const Profile = require("../models/Profile");
-const Post = require("../models/Post");
+const Posts = require("../models/Posts");
 const User = require("../models/User");
 
 const { validationResult } = require("express-validator");
@@ -17,7 +17,7 @@ module.exports = {
     const profileFields = {
       user: req.user.id,
       bio,
-      location,
+      city,
       state,
     };
 
