@@ -53,4 +53,18 @@ module.exports = {
       res.status(500).send("Server error");
     }
   },
+  deletePost: async (req, res) => {
+    try {
+      const deletedPost = await Post.findByIdAndDelete(req.params.id).exec();
+
+      if (!deletedPost) {
+        return res.status(401).json({ msg: "Post not found" });
+      }
+
+      res.json({ msg: "Post has been removed" });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server error");
+    }
+  },
 };
