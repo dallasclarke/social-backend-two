@@ -62,7 +62,7 @@ module.exports = {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password, fullName, birthday } = req.body;
+    const { email, password, name, birthday } = req.body;
 
     try {
       let user = await User.findOne({ email });
@@ -76,7 +76,7 @@ module.exports = {
       user = new User({
         email,
         password,
-        fullName,
+        name,
         birthday,
       });
 
