@@ -75,4 +75,20 @@ module.exports = {
       res.status(500).send("Server error");
     }
   },
+  getProfileById: async (req, res) => {
+    try {
+      const profile = await Profile.findOne({
+        user: req.params.user_id,
+      });
+
+      if (!profile) {
+        return res.status(400).send({ msg: "Profile not found" });
+      }
+
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server error");
+    }
+  },
 };
