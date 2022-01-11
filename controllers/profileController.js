@@ -91,4 +91,16 @@ module.exports = {
       res.status(500).send("Server error");
     }
   },
+  deleteProfile: async (req, res) => {
+    try {
+      await Posts.deleteMany({ user: req.user.id });
+      await Profile.deleteMany({ user: req.user.id });
+      await User.findOneAndRemove({ _id: req.user.id });
+
+      res.json({ msg: "User removed" });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server error");
+    }
+  },
 };
